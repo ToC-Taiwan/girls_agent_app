@@ -1,1 +1,14 @@
-{}
+{
+    "app_title": "Pd Captain",
+    "dashboard": "Dashboard",
+    "time_line": "Timeline",
+    "calendar": "Calendar",
+    "report": "Report",
+    "notification": "Notification",
+    "pd_center": "Pd Center",
+    "profiles": "Profiles",
+    "remove_ad": "Remove Ad",
+    "contact_us": "Contact Us",
+    "settings": "Settings",
+    "new_event": "New Event"
+}

@@ -1,5 +1,5 @@
 // DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a en locale. All the
+// This is a library that provides messages for a zh locale. All the
 // messages from the main program should be duplicated here with the same
 // function name.
 
@@ -18,21 +18,21 @@ final messages = new MessageLookup();
 typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 
 class MessageLookup extends MessageLookupByLibrary {
-  String get localeName => 'en';
+  String get localeName => 'zh';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "app_title": MessageLookupByLibrary.simpleMessage("Pd Captain"),
-        "calendar": MessageLookupByLibrary.simpleMessage("Calendar"),
-        "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
-        "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
-        "new_event": MessageLookupByLibrary.simpleMessage("New Event"),
-        "notification": MessageLookupByLibrary.simpleMessage("Notification"),
-        "pd_center": MessageLookupByLibrary.simpleMessage("Pd Center"),
-        "profiles": MessageLookupByLibrary.simpleMessage("Profiles"),
-        "remove_ad": MessageLookupByLibrary.simpleMessage("Remove Ad"),
-        "report": MessageLookupByLibrary.simpleMessage("Report"),
-        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
-        "time_line": MessageLookupByLibrary.simpleMessage("Timeline")
+        "app_title": MessageLookupByLibrary.simpleMessage("經期隊長"),
+        "calendar": MessageLookupByLibrary.simpleMessage("日曆"),
+        "contact_us": MessageLookupByLibrary.simpleMessage("聯絡我們"),
+        "dashboard": MessageLookupByLibrary.simpleMessage("看板"),
+        "new_event": MessageLookupByLibrary.simpleMessage("新事件"),
+        "notification": MessageLookupByLibrary.simpleMessage("通知"),
+        "pd_center": MessageLookupByLibrary.simpleMessage("控制中心"),
+        "profiles": MessageLookupByLibrary.simpleMessage("個人檔案"),
+        "remove_ad": MessageLookupByLibrary.simpleMessage("移除廣告"),
+        "report": MessageLookupByLibrary.simpleMessage("報告"),
+        "settings": MessageLookupByLibrary.simpleMessage("設定"),
+        "time_line": MessageLookupByLibrary.simpleMessage("時間軸")
       };
 }

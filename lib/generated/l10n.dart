@@ -49,6 +49,126 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Pd Captain`
+  String get app_title {
+    return Intl.message(
+      'Pd Captain',
+      name: 'app_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dashboard`
+  String get dashboard {
+    return Intl.message(
+      'Dashboard',
+      name: 'dashboard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Timeline`
+  String get time_line {
+    return Intl.message(
+      'Timeline',
+      name: 'time_line',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Calendar`
+  String get calendar {
+    return Intl.message(
+      'Calendar',
+      name: 'calendar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Report`
+  String get report {
+    return Intl.message(
+      'Report',
+      name: 'report',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notification`
+  String get notification {
+    return Intl.message(
+      'Notification',
+      name: 'notification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pd Center`
+  String get pd_center {
+    return Intl.message(
+      'Pd Center',
+      name: 'pd_center',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profiles`
+  String get profiles {
+    return Intl.message(
+      'Profiles',
+      name: 'profiles',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remove Ad`
+  String get remove_ad {
+    return Intl.message(
+      'Remove Ad',
+      name: 'remove_ad',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact Us`
+  String get contact_us {
+    return Intl.message(
+      'Contact Us',
+      name: 'contact_us',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message(
+      'Settings',
+      name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Event`
+  String get new_event {
+    return Intl.message(
+      'New Event',
+      name: 'new_event',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -57,6 +177,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'zh'),
     ];
   }
 
