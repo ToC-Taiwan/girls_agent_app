@@ -71,7 +71,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                 fontWeight: FontWeight.w600,
               ),
               child: const Text(
-                "Pd",
+                'Pd',
               ),
             ),
             AnimatedCrossFade(
@@ -94,7 +94,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
       mainAxisSize: MainAxisSize.min,
       children: const [
         Text(
-          "Captain",
+          'Captain',
           style: TextStyle(
             color: Colors.orange,
             fontSize: 50,
