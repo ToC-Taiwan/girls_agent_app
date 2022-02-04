@@ -42,7 +42,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.girls_agent_app"
+        applicationId "com.tocandraw.girls_agent_app"
         minSdkVersion 26
         targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()
