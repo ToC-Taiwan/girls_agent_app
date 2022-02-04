@@ -3,7 +3,7 @@ description: App for girls agent
 
 publish_to: "none"
 
-version: 1.0.2+269
+version: 1.0.1+269
 
 environment:
   sdk: ">=2.16.0 <3.0.0"
