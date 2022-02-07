@@ -17,6 +17,8 @@ dependencies:
   table_calendar: ^3.0.3
   app_tracking_transparency: ^2.0.2+1
   google_mobile_ads: ^1.0.1
+  sqflite: ^2.0.2
+  path: ^1.8.0
 
 dev_dependencies:
   flutter_test:
@@ -35,6 +37,8 @@ flutter:
   assets:
     - assets/app_icon.png
     - assets/app_icon_no_background.png
+    - assets/material_design_3.png
+    - assets/material_design_4.jpg
 
 flutter_intl:
   enabled: true

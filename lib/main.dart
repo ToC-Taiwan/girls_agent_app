@@ -6,9 +6,12 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:girls_agent_app/intro.dart';
 import 'package:girls_agent_app/generated/l10n.dart';
 
-void main() {
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   MobileAds.instance.initialize();
   MobileAds.instance.updateRequestConfiguration(
@@ -16,6 +19,14 @@ void main() {
       testDeviceIds: ['kGADSimulatorID'],
     ),
   );
+
+  WidgetsFlutterBinding.ensureInitialized();
+  final database = await openDatabase(
+    join(await getDatabasesPath(), 'girls_agent_app.db'),
+    singleInstance: true,
+  );
+  database.execute('CREATE TABLE IF NOT EXISTS timeline(id INTEGER PRIMARY KEY, name TEXT, age INTEGER);');
+  database.execute('CREATE TABLE IF NOT EXISTS dashboard(id INTEGER PRIMARY KEY, name TEXT, age INTEGER)');
 
   runApp(
     const GirlsAgentAPP(),
@@ -30,13 +41,6 @@ class GirlsAgentAPP extends StatelessWidget {
     return MaterialApp(
       title: 'GirlsAgentAPP',
       home: const IntroPage(),
-      // theme: ThemeData(
-      //   primarySwatch: MaterialColor(0xFFFFF8E1, amberColorMap),
-      //   bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      //     backgroundColor: MaterialColor(0xFFE8EAF6, indigoColorMap),
-      //     selectedItemColor: Colors.black,
-      //   ),
-      // ),
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
         S.delegate,
@@ -48,29 +52,3 @@ class GirlsAgentAPP extends StatelessWidget {
     );
   }
 }
-
-var amberColorMap = <int, Color>{
-  50: const Color(0xFFFFF8E1),
-  100: const Color(0xFFFFECB3),
-  200: const Color(0xFFFFE082),
-  300: const Color(0xFFFFD54F),
-  400: const Color(0xFFFFCA28),
-  500: const Color(0xFFFFC107),
-  600: const Color(0xFFFFB300),
-  700: const Color(0xFFFFA000),
-  800: const Color(0xFFFF8F00),
-  900: const Color(0xFFFF6F00),
-};
-
-var indigoColorMap = <int, Color>{
-  50: const Color(0xFFE8EAF6),
-  100: const Color(0xFFC5CAE9),
-  200: const Color(0xFF9FA8DA),
-  300: const Color(0xFF7986CB),
-  400: const Color(0xFF5C6BC0),
-  500: const Color(0xFF3F51B5),
-  600: const Color(0xFF3949AB),
-  700: const Color(0xFF303F9F),
-  800: const Color(0xFF283593),
-  900: const Color(0xFF1A237E),
-};

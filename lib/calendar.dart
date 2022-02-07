@@ -55,7 +55,7 @@ class _CalendarPageState extends State<CalendarPage> {
           child: SizedBox(
             child: Center(
               child: Text(
-                '第 5 天',
+                'The 5 Day',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
             ),

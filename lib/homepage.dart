@@ -19,7 +19,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _currentIndex = 0;
+  int _currentIndex = 2;
   final pages = [
     const DashboardPage(),
     const TimeLinePage(),
@@ -37,26 +37,37 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: SizedBox(
+      backgroundColor: Colors.grey.shade100,
+      drawer: Container(
+        color: Colors.indigo,
+        padding: const EdgeInsets.only(top: 40),
         width: 200,
         child: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
               SizedBox(
-                height: 100,
+                height: 120,
                 child: DrawerHeader(
-                  child: Row(
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      alignment: Alignment.center,
+                      image: AssetImage(
+                        'assets/app_icon_no_background.png',
+                      ),
+                    ),
+                    color: Colors.indigo,
+                  ),
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const Image(image: AssetImage('assets/app_icon_no_background.png')),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        S.of(context).pd_center,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
+                    children: const [
+                      // Text(
+                      //   S.of(context).pd_center,
+                      //   style: const TextStyle(fontWeight: FontWeight.bold),
+                      // ),
+                      SizedBox(
+                        height: 10,
+                      )
                     ],
                   ),
                 ),
@@ -103,6 +114,7 @@ class _HomePageState extends State<HomePage> {
       ),
       appBar: AppBar(
         title: Text(widget.title),
+        backgroundColor: Colors.indigo,
         actions: [
           IconButton(
             icon: const Icon(
@@ -144,8 +156,12 @@ class _HomePageState extends State<HomePage> {
       body: pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        showUnselectedLabels: true,
-        iconSize: 35,
+        backgroundColor: Colors.black,
+        unselectedItemColor: Colors.indigo.shade300,
+        fixedColor: Colors.white,
+        elevation: 0,
+        // showUnselectedLabels: true,
+        iconSize: 25,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: const Icon(Icons.dashboard),

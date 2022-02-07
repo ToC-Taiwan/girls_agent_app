@@ -53,7 +53,6 @@ class _AnalyzePageState extends State<AnalyzePage> {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             S.of(context).report,
