@@ -9,9 +9,16 @@ import 'package:girls_agent_app/generated/l10n.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
+import 'package:firebase_core/firebase_core.dart';
+import 'package:girls_agent_app/firebase_options.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   MobileAds.instance.initialize();
   MobileAds.instance.updateRequestConfiguration(
