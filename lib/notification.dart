@@ -40,13 +40,13 @@ class _SettingsPageState extends State<NotificationPage> with SingleTickerProvid
       length: MediaQuery.of(context).size.width.toInt(),
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.grey.shade100,
           elevation: 0,
           title: TabBar(
             controller: tabController,
             labelColor: Colors.black,
             unselectedLabelColor: Colors.grey,
-            indicatorColor: Colors.indigo,
+            indicatorColor: Colors.pink,
             tabs: const [
               Tab(text: 'Unread'),
               Tab(text: 'Read'),

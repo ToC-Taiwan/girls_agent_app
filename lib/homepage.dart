@@ -37,6 +37,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       backgroundColor: Colors.grey.shade100,
       drawer: Container(
         color: Colors.indigo,
@@ -113,12 +114,22 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: Colors.pink,
+        ),
         title: Text(widget.title),
-        backgroundColor: Colors.indigo,
+        titleTextStyle: const TextStyle(
+          color: Colors.black,
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+        ),
+        backgroundColor: Colors.grey.shade100,
+        elevation: 0,
         actions: [
           IconButton(
             icon: const Icon(
               Icons.add,
+              // color: Colors.pink,
             ),
             onPressed: () => showDialog<String>(
               context: context,
@@ -156,12 +167,14 @@ class _HomePageState extends State<HomePage> {
       body: pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.black,
-        unselectedItemColor: Colors.indigo.shade300,
-        fixedColor: Colors.white,
+        backgroundColor: const Color.fromARGB(250, 153, 208, 218),
+        unselectedItemColor: Colors.pink.shade50,
+        showSelectedLabels: true,
+        showUnselectedLabels: false,
+        fixedColor: Colors.pink,
         elevation: 0,
         // showUnselectedLabels: true,
-        iconSize: 25,
+        iconSize: 30,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: const Icon(Icons.dashboard),
