@@ -4,7 +4,6 @@ import 'package:girls_agent_app/calendar.dart';
 import 'package:girls_agent_app/report.dart';
 import 'package:girls_agent_app/dashboard.dart';
 import 'package:girls_agent_app/timeline.dart';
-import 'package:girls_agent_app/notification.dart';
 import 'package:girls_agent_app/settings.dart';
 import 'package:girls_agent_app/profiles.dart';
 import 'package:girls_agent_app/generated/l10n.dart';
@@ -19,13 +18,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _currentIndex = 2;
+  int _currentIndex = 0;
   final pages = [
     const DashboardPage(),
     const TimeLinePage(),
     const CalendarPage(),
     const AnalyzePage(),
-    const NotificationPage(),
+    // const NotificationPage(),
   ];
 
   void _onItemClick(int index) {
@@ -37,7 +36,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true,
+      extendBody: false,
       backgroundColor: Colors.grey.shade100,
       drawer: Container(
         color: Colors.indigo,
@@ -74,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               ListTile(
-                leading: const Icon(Icons.people),
+                leading: const Icon(Icons.perm_contact_calendar_outlined),
                 title: Text(
                   S.of(context).profiles,
                 ),
@@ -126,76 +125,95 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.grey.shade100,
         elevation: 0,
         actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.add,
-              // color: Colors.pink,
-            ),
-            onPressed: () => showDialog<String>(
-              context: context,
-              builder: (BuildContext context) => Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  AlertDialog(
-                    actionsAlignment: MainAxisAlignment.center,
-                    title: Text(
-                      S.of(context).new_event,
+          PopupMenuButton(
+            icon: const Icon(Icons.add),
+            itemBuilder: (BuildContext context) {
+              return [
+                PopupMenuItem(
+                  child: TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'Bleeding',
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                    actions: <Widget>[
-                      TextButton(
-                        onPressed: () => Navigator.pop(context, 'Cancel'),
-                        child: const Text(
-                          'Cancel',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () => Navigator.pop(context, 'OK'),
-                        child: const Text(
-                          'OK',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ),
-                    ],
                   ),
-                ],
-              ),
-            ),
-          ),
+                ),
+                PopupMenuItem(
+                  child: TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'Bleeding',
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                PopupMenuItem(
+                  child: TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'Bleeding',
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                PopupMenuItem(
+                  child: TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'Bleeding',
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                )
+              ];
+            },
+          )
         ],
       ),
       body: pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: const Color.fromARGB(250, 153, 208, 218),
+        backgroundColor: const Color.fromARGB(235, 153, 208, 218),
         unselectedItemColor: Colors.pink.shade50,
-        showSelectedLabels: true,
+        showSelectedLabels: false,
         showUnselectedLabels: false,
         fixedColor: Colors.pink,
-        elevation: 0,
+        // elevation: 10,
         // showUnselectedLabels: true,
-        iconSize: 30,
+        // iconSize: 30,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: const Icon(Icons.dashboard),
             label: S.of(context).dashboard,
           ),
           BottomNavigationBarItem(
-            icon: const Icon(Icons.hdr_strong_rounded),
+            icon: const Icon(Icons.timeline),
             label: S.of(context).time_line,
           ),
           BottomNavigationBarItem(
-            icon: const Icon(Icons.calendar_today_rounded),
+            icon: const Icon(Icons.calendar_today_outlined),
             label: S.of(context).calendar,
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.receipt_rounded),
             label: S.of(context).report,
           ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.notifications_active_rounded),
-            label: S.of(context).notification,
-          ),
+          // BottomNavigationBarItem(
+          //   icon: const Icon(Icons.notifications_active_rounded),
+          //   label: S.of(context).notification,
+          // ),
         ],
         currentIndex: _currentIndex,
         // fixedColor: Colors.blue,

@@ -31,24 +31,26 @@ class _GearPageState extends State<TimeLinePage> {
 
   Future<List<TimeLine>> allTLines() async {
     final db = await getConnection();
-    final List<Map<String, dynamic>> maps = await db.query('timeline');
+    final List<Map<String, dynamic>> maps = await db.query('timeline', orderBy: 'id desc');
     return List.generate(maps.length, (i) {
       return TimeLine(
         id: maps[i]['id'],
-        name: maps[i]['name'],
-        age: maps[i]['age'],
+        year: maps[i]['year'],
+        month: maps[i]['month'],
+        day: maps[i]['day'],
       );
     });
   }
 
   void doInsert() async {
-    int i = 0;
-    while (i < 20) {
+    int i = 1;
+    while (i < 21) {
       i++;
       var fido = TimeLine(
         id: i,
-        name: 'TimeLine $i',
-        age: i * 33,
+        year: '2022',
+        month: 'Feb',
+        day: i.toString(),
       );
       await insertTLine(fido);
     }
@@ -67,9 +69,12 @@ class _GearPageState extends State<TimeLinePage> {
           List<TimeLine> tmp = [];
           tmp = snapshot.data!;
           // return Text(tmp[1].name);
-          return ListView(
-            shrinkWrap: true,
-            children: timeLineGenerator(tmp),
+          return Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: ListView(
+              shrinkWrap: true,
+              children: timeLineGenerator(tmp),
+            ),
           );
         } else if (snapshot.hasError) {
           return Text('${snapshot.error}');
@@ -83,57 +88,76 @@ class _GearPageState extends State<TimeLinePage> {
 List<Widget> timeLineGenerator(List<TimeLine> arr) {
   List<Widget> tmp = [];
   for (var element in arr) {
-    String picPath = 'assets/material_design_4.jpg';
-    int cond = element.id % 2;
-    if (cond != 0) {
-      picPath = 'assets/material_design_3.png';
-    }
     var card = Card(
+      elevation: 8,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(50),
+        borderRadius: BorderRadius.circular(20),
       ),
-      child: SizedBox(
-        height: 100.0,
-        child: Stack(
-          children: <Widget>[
-            Positioned.fill(
-              child: Image.asset(
-                picPath,
-                fit: BoxFit.fill,
-              ),
-            ),
-            Positioned(
-              left: 16.0,
-              top: 16.0,
-              child: FittedBox(
-                fit: BoxFit.cover,
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Event ' + element.id.toString(),
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.pink.shade50,
+        ),
+        height: 80,
+        child: Row(
+          children: [
+            Expanded(
+              flex: 2,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.pink.shade50,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Text(
+                        element.year,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 15),
+                      child: Row(
+                        children: [
+                          Expanded(
+                              flex: 3,
+                              child: Text(
+                                element.month,
+                                style: const TextStyle(fontSize: 15),
+                              )),
+                          Expanded(
+                            flex: 4,
+                            child: Text(
+                              element.day,
+                              style: const TextStyle(fontSize: 30),
+                              textAlign: TextAlign.end,
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
                 ),
               ),
             ),
-            Positioned(
-              bottom: 16.0,
-              left: 16.0,
-              child: FittedBox(
-                fit: BoxFit.cover,
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  element.toString(),
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white),
+            Expanded(
+              flex: 5,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(20),
+                    bottomRight: Radius.circular(20),
+                  ),
+                  color: Colors.pink.shade100,
                 ),
               ),
-            ),
-            const Positioned(
-              top: 16.0,
-              right: 16.0,
-              child: Icon(
-                Icons.bloodtype,
-                color: Colors.red,
-              ),
-            ),
+            )
           ],
         ),
       ),
@@ -145,25 +169,28 @@ List<Widget> timeLineGenerator(List<TimeLine> arr) {
 
 class TimeLine {
   final int id;
-  final String name;
-  final int age;
+  final String year;
+  final String month;
+  final String day;
 
   TimeLine({
     required this.id,
-    required this.name,
-    required this.age,
+    required this.year,
+    required this.month,
+    required this.day,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'name': name,
-      'age': age,
+      'year': year,
+      'month': month,
+      'day': day,
     };
   }
 
   @override
   String toString() {
-    return '$name, age: $age';
+    return '$year-$month-$day';
   }
 }
