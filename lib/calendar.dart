@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:table_calendar/table_calendar.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-
-import 'package:girls_agent_app/utils.dart';
 import 'package:girls_agent_app/ad_id.dart';
+import 'package:girls_agent_app/utils.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({Key? key}) : super(key: key);
@@ -18,7 +17,7 @@ class _CalendarPageState extends State<CalendarPage> {
     size: AdSize.banner,
     request: const AdRequest(),
     listener: BannerAdListener(
-      onAdFailedToLoad: (Ad ad, LoadAdError _) {
+      onAdFailedToLoad: (ad, _) {
         // Dispose the ad here to free resources.
         ad.dispose();
       },
@@ -46,20 +45,19 @@ class _CalendarPageState extends State<CalendarPage> {
 
   @override
   Widget build(BuildContext context) {
-    final AdWidget adWidget = AdWidget(ad: myBanner);
-    final Container adContainer = Container(
+    final adWidget = AdWidget(ad: myBanner);
+    final adContainer = Container(
       padding: const EdgeInsets.only(top: 5),
       alignment: Alignment.center,
-      child: adWidget,
       width: myBanner.size.width.toDouble(),
       height: myBanner.size.height.toDouble(),
+      child: adWidget,
     );
     return Column(
       // direction: Axis.vertical,
       // mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         Expanded(
-          flex: 1,
           child: adContainer,
         ),
         // const Expanded(
@@ -118,14 +116,14 @@ class _CalendarPageState extends State<CalendarPage> {
             // Use a Builder here, otherwise `DefaultTabController.of(context)` below
             // returns null.
             child: Builder(
-              builder: (BuildContext context) => Padding(
-                padding: const EdgeInsets.all(8.0),
+              builder: (context) => Padding(
+                padding: const EdgeInsets.all(8),
                 child: Column(
                   children: <Widget>[
                     Expanded(
                       child: IconTheme(
                         data: IconThemeData(
-                          size: 64.0,
+                          size: 64,
                           color: Theme.of(context).colorScheme.secondary,
                         ),
                         child: Card(
@@ -133,7 +131,7 @@ class _CalendarPageState extends State<CalendarPage> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
-                          child: Container(
+                          child: DecoratedBox(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: Colors.pink.shade50,

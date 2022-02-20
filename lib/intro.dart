@@ -1,10 +1,10 @@
 import 'dart:io' show Platform;
-import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
-import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 
-import 'package:girls_agent_app/homepage.dart';
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:girls_agent_app/generated/l10n.dart';
+import 'package:girls_agent_app/homepage.dart';
 
 // import 'package:firebase_messaging/firebase_messaging.dart';
 
@@ -17,7 +17,8 @@ class IntroPage extends StatefulWidget {
 
 class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
   late AnimationController _lottieAnimation;
-  var expanded = false;
+
+  bool expanded = false;
   final double _bigFontSize = kIsWeb ? 234 : 178;
   final transitionDuration = const Duration(seconds: 1);
 
@@ -78,11 +79,11 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlugin() async {
     // Platform messages may fail, so we use a try/catch PlatformException.
-    final TrackingStatus status = await AppTrackingTransparency.trackingAuthorizationStatus;
+    final status = await AppTrackingTransparency.trackingAuthorizationStatus;
     // If the system can show an authorization request dialog
     if (Platform.isIOS && status == TrackingStatus.notDetermined) {
       // Request system's tracking authorization dialog
-      AppTrackingTransparency.requestTrackingAuthorization();
+      await AppTrackingTransparency.requestTrackingAuthorization();
     }
   }
 

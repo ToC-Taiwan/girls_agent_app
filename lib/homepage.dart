@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-
 import 'package:girls_agent_app/calendar.dart';
-import 'package:girls_agent_app/report.dart';
 import 'package:girls_agent_app/dashboard.dart';
-import 'package:girls_agent_app/timeline.dart';
-import 'package:girls_agent_app/settings.dart';
-import 'package:girls_agent_app/profiles.dart';
 import 'package:girls_agent_app/generated/l10n.dart';
+import 'package:girls_agent_app/profiles.dart';
+import 'package:girls_agent_app/report.dart';
+import 'package:girls_agent_app/settings.dart';
+import 'package:girls_agent_app/timeline.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
@@ -36,7 +35,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: false,
       backgroundColor: Colors.grey.shade100,
       drawer: Container(
         color: Colors.indigo,
@@ -51,7 +49,6 @@ class _HomePageState extends State<HomePage> {
                 child: DrawerHeader(
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      alignment: Alignment.center,
                       image: AssetImage(
                         'assets/app_icon_no_background.png',
                       ),
@@ -59,7 +56,6 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.indigo,
                   ),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     children: const [
                       // Text(
                       //   S.of(context).pd_center,
@@ -127,7 +123,7 @@ class _HomePageState extends State<HomePage> {
         actions: [
           PopupMenuButton(
             icon: const Icon(Icons.add),
-            itemBuilder: (BuildContext context) {
+            itemBuilder: (context) {
               return [
                 PopupMenuItem(
                   child: TextButton(

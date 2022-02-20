@@ -24,30 +24,21 @@ include: package:flutter_lints/flutter.yaml
 #   rules:
 #     # avoid_print: false # Uncomment to disable the `avoid_print` rule
 #     prefer_single_quotes: true # Uncomment to enable the `prefer_single_quotes` rule
+# Additional information about this file can be found at
+# https://dart.dev/guides/language/analysis-options
+
 linter:
   rules:
     - avoid_types_on_closure_parameters
     - omit_local_variable_types
-    # - always_specify_types
-
-    - prefer_final_parameters
-    # - avoid_final_parameters
-    # - unnecessary_final
-
+    - avoid_final_parameters
     - prefer_single_quotes
-    # - prefer_double_quotes
-
     - always_declare_return_types
-    - always_put_control_body_on_new_line
-    - always_put_required_named_parameters_first
     - always_require_non_null_named_parameters
-    - always_use_package_imports
     - annotate_overrides
     - avoid_annotating_with_dynamic
     - avoid_bool_literals_in_conditional_expressions
-    - avoid_catches_without_on_clauses
     - avoid_catching_errors
-    - avoid_classes_with_only_static_members
     - avoid_double_and_int_checks
     - avoid_dynamic_calls
     - avoid_empty_else
@@ -92,9 +83,7 @@ linter:
     - constant_identifier_names
     - control_flow_in_finally
     - curly_braces_in_flow_control_structures
-    - depend_on_referenced_packages
     - deprecated_consistency
-    - diagnostic_describe_all_properties
     - directives_ordering
     - do_not_use_environment
     - empty_catches
@@ -112,8 +101,6 @@ linter:
     - leading_newlines_in_multiline_strings
     - library_names
     - library_prefixes
-    - library_private_types_in_public_api
-    - lines_longer_than_80_chars
     - list_remove_unrelated_type
     - literal_only_boolean_expressions
     - missing_whitespace_between_adjacent_strings
@@ -147,10 +134,8 @@ linter:
     - prefer_constructors_over_static_methods
     - prefer_contains
     - prefer_equal_for_default_values
-    - prefer_expression_function_bodies
     - prefer_final_fields
     - prefer_final_in_for_each
-    - prefer_final_locals
     - prefer_for_elements_to_map_fromIterable
     - prefer_foreach
     - prefer_function_declarations_over_variables
@@ -172,16 +157,13 @@ linter:
     - prefer_typing_uninitialized_variables
     - prefer_void_to_null
     - provide_deprecation_message
-    # - public_member_api_docs
     - recursive_getters
-    - require_trailing_commas
     - secure_pubspec_urls
     - sized_box_for_whitespace
     - sized_box_shrink_expand
     - slash_for_doc_comments
     - sort_child_properties_last
     - sort_constructors_first
-    - sort_pub_dependencies
     - sort_unnamed_constructors_first
     - test_types_in_equals
     - throw_in_finally
@@ -194,7 +176,6 @@ linter:
     - unnecessary_const
     - unnecessary_constructor_name
     - unnecessary_getters_setters
-    - unnecessary_lambdas
     - unnecessary_late
     - unnecessary_new
     - unnecessary_null_aware_assignments
@@ -227,5 +208,3 @@ linter:
     - use_to_and_as_if_applicable
     - valid_regexps
     - void_checks
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options

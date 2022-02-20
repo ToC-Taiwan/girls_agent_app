@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-
 // import 'package:girls_agent_app/generated/l10n.dart';
 
 class TimeLinePage extends StatefulWidget {
@@ -43,7 +42,7 @@ class _GearPageState extends State<TimeLinePage> {
   }
 
   void doInsert() async {
-    int i = 1;
+    var i = 1;
     while (i < 21) {
       i++;
       var fido = TimeLine(
@@ -66,11 +65,11 @@ class _GearPageState extends State<TimeLinePage> {
       future: arr,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<TimeLine> tmp = [];
+          var tmp = <TimeLine>[];
           tmp = snapshot.data!;
           // return Text(tmp[1].name);
           return Padding(
-            padding: const EdgeInsets.only(top: 8.0),
+            padding: const EdgeInsets.only(top: 8),
             child: ListView(
               shrinkWrap: true,
               children: timeLineGenerator(tmp),
@@ -86,8 +85,8 @@ class _GearPageState extends State<TimeLinePage> {
 }
 
 List<Widget> timeLineGenerator(List<TimeLine> arr) {
-  List<Widget> tmp = [];
-  for (var element in arr) {
+  var tmp = <Widget>[];
+  for (final element in arr) {
     var card = Card(
       elevation: 8,
       shape: RoundedRectangleBorder(
@@ -103,7 +102,7 @@ List<Widget> timeLineGenerator(List<TimeLine> arr) {
           children: [
             Expanded(
               flex: 2,
-              child: Container(
+              child: DecoratedBox(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.pink.shade50,
@@ -148,13 +147,13 @@ List<Widget> timeLineGenerator(List<TimeLine> arr) {
             ),
             Expanded(
               flex: 5,
-              child: Container(
+              child: DecoratedBox(
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.only(
                     topRight: Radius.circular(20),
                     bottomRight: Radius.circular(20),
                   ),
-                  color: Colors.pink.shade100,
+                  color: Colors.pink.shade200,
                 ),
               ),
             )
@@ -168,17 +167,17 @@ List<Widget> timeLineGenerator(List<TimeLine> arr) {
 }
 
 class TimeLine {
-  final int id;
-  final String year;
-  final String month;
-  final String day;
-
   TimeLine({
     required this.id,
     required this.year,
     required this.month,
     required this.day,
   });
+
+  final int id;
+  final String year;
+  final String month;
+  final String day;
 
   Map<String, dynamic> toMap() {
     return {

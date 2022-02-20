@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-
-import 'package:girls_agent_app/generated/l10n.dart';
 import 'package:girls_agent_app/ad_id.dart';
+import 'package:girls_agent_app/generated/l10n.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class AnalyzePage extends StatefulWidget {
   const AnalyzePage({Key? key}) : super(key: key);
@@ -61,7 +60,7 @@ class _AnalyzePageState extends State<AnalyzePage> {
 
   @override
   Widget build(BuildContext context) {
-    int i = 0;
+    var i = 0;
     while (i < 20) {
       i++;
       kIcons.add(reportCard());
@@ -71,15 +70,15 @@ class _AnalyzePageState extends State<AnalyzePage> {
       // Use a Builder here, otherwise `DefaultTabController.of(context)` below
       // returns null.
       child: Builder(
-        builder: (BuildContext context) => Padding(
-          padding: const EdgeInsets.all(8.0),
+        builder: (context) => Padding(
+          padding: const EdgeInsets.all(8),
           child: Column(
             children: <Widget>[
               // const TabPageSelector(),
               Expanded(
                 child: IconTheme(
                   data: IconThemeData(
-                    size: 128.0,
+                    size: 128,
                     color: Theme.of(context).colorScheme.secondary,
                   ),
                   child: TabBarView(children: kIcons),
@@ -94,7 +93,7 @@ class _AnalyzePageState extends State<AnalyzePage> {
                       backgroundColor: MaterialStateProperty.all(Colors.white),
                     ),
                     onPressed: () {
-                      final TabController controller = DefaultTabController.of(context)!;
+                      final controller = DefaultTabController.of(context)!;
                       if (!controller.indexIsChanging) {
                         controller.animateTo(0);
                       }
@@ -110,7 +109,7 @@ class _AnalyzePageState extends State<AnalyzePage> {
                       backgroundColor: MaterialStateProperty.all(Colors.white),
                     ),
                     onPressed: () {
-                      final TabController controller = DefaultTabController.of(context)!;
+                      final controller = DefaultTabController.of(context)!;
                       if (!controller.indexIsChanging) {
                         controller.animateTo(kIcons.length - 1);
                       }
@@ -149,13 +148,13 @@ Widget reportCard() {
   return Padding(
     padding: const EdgeInsets.only(bottom: 10, left: 20, right: 20),
     child: Material(
-      elevation: 8.0,
-      borderRadius: BorderRadius.circular(12.0),
+      elevation: 8,
+      borderRadius: BorderRadius.circular(12),
       shadowColor: Colors.pink.shade100,
       child: SizedBox(
         height: 250,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [

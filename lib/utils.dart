@@ -3,9 +3,9 @@ import 'dart:collection';
 import 'package:table_calendar/table_calendar.dart';
 
 class Event {
-  final String title;
-
   const Event(this.title);
+
+  final String title;
 
   @override
   String toString() => title;
@@ -22,8 +22,8 @@ final _kEventSource = {
     DateTime.utc(kFirstDay.year, kFirstDay.month, item * 5): List.generate(item % 4 + 1, (index) => Event('Event $item | ${index + 1}'))
 }..addAll({
     kToday: [
-      const Event('Today\'s Event 1'),
-      const Event('Today\'s Event 2'),
+      const Event("Today's Event 1"),
+      const Event("Today's Event 2"),
     ],
   });
 
