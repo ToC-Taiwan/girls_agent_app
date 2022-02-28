@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:girls_agent_app/calendar.dart';
 import 'package:girls_agent_app/dashboard.dart';
+import 'package:girls_agent_app/database.dart';
 import 'package:girls_agent_app/generated/l10n.dart';
 import 'package:girls_agent_app/profiles.dart';
 import 'package:girls_agent_app/report.dart';
@@ -8,8 +9,8 @@ import 'package:girls_agent_app/settings.dart';
 import 'package:girls_agent_app/timeline.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.title}) : super(key: key);
-
+  const HomePage({Key? key, required this.title, required this.db}) : super(key: key);
+  final AppDatabase db;
   final String title;
 
   @override
@@ -18,13 +19,21 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
-  final pages = [
-    const DashboardPage(),
-    const TimeLinePage(),
-    const CalendarPage(),
-    const AnalyzePage(),
-    // const NotificationPage(),
-  ];
+  List pages = [];
+
+  @override
+  void initState() {
+    super.initState();
+    pages = [
+      const DashboardPage(),
+      TimeLinePage(
+        db: widget.db,
+      ),
+      const CalendarPage(),
+      const AnalyzePage(),
+      // const NotificationPage(),
+    ];
+  }
 
   void _onItemClick(int index) {
     setState(() {

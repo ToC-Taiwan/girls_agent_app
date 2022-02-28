@@ -3,13 +3,15 @@ import 'dart:io' show Platform;
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:girls_agent_app/database.dart';
 import 'package:girls_agent_app/generated/l10n.dart';
 import 'package:girls_agent_app/homepage.dart';
 
 // import 'package:firebase_messaging/firebase_messaging.dart';
 
 class IntroPage extends StatefulWidget {
-  const IntroPage({Key? key}) : super(key: key);
+  const IntroPage({Key? key, required this.db}) : super(key: key);
+  final AppDatabase db;
 
   @override
   _IntroPageState createState() => _IntroPageState();
@@ -37,6 +39,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                       MaterialPageRoute(
                         builder: (context) => HomePage(
                           title: S.of(context).app_title,
+                          db: widget.db,
                         ),
                       ),
                       (route) => false),

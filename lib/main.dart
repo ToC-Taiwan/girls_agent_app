@@ -4,12 +4,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:girls_agent_app/database.dart';
 import 'package:girls_agent_app/firebase_options.dart';
 import 'package:girls_agent_app/generated/l10n.dart';
 import 'package:girls_agent_app/intro.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:path/path.dart';
-import 'package:sqflite/sqflite.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,11 +26,7 @@ void main() async {
   );
 
   WidgetsFlutterBinding.ensureInitialized();
-  final database = await openDatabase(
-    join(await getDatabasesPath(), 'girls_agent_app.db'),
-  );
-
-  await database.execute('CREATE TABLE IF NOT EXISTS timeline(id INTEGER PRIMARY KEY, year TEXT, month TEXT, day TEXT);');
+  final db = await $FloorAppDatabase.databaseBuilder('app_database.db').build();
 
   var messaging = FirebaseMessaging.instance;
   await messaging.requestPermission();
@@ -48,18 +43,24 @@ void main() async {
   );
 
   runApp(
-    const GirlsAgentAPP(),
+    GirlsAgentAPP(
+      db: db,
+    ),
   );
 }
 
 class GirlsAgentAPP extends StatelessWidget {
-  const GirlsAgentAPP({Key? key}) : super(key: key);
+  const GirlsAgentAPP({Key? key, required this.db}) : super(key: key);
+
+  final AppDatabase db;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'GirlsAgentAPP',
-      home: const IntroPage(),
+      home: IntroPage(
+        db: db,
+      ),
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
         S.delegate,

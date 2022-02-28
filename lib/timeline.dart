@@ -1,73 +1,49 @@
 import 'package:flutter/material.dart';
-
-import 'package:path/path.dart';
-import 'package:sqflite/sqflite.dart';
+import 'package:girls_agent_app/database.dart';
+import 'package:girls_agent_app/models/timeline.dart';
 // import 'package:girls_agent_app/generated/l10n.dart';
 
 class TimeLinePage extends StatefulWidget {
-  const TimeLinePage({Key? key}) : super(key: key);
+  const TimeLinePage({Key? key, required this.db}) : super(key: key);
+  final AppDatabase db;
 
   @override
   _GearPageState createState() => _GearPageState();
 }
 
 class _GearPageState extends State<TimeLinePage> {
-  Future<Database> getConnection() async {
-    final database = openDatabase(
-      join(await getDatabasesPath(), 'girls_agent_app.db'),
-    );
-    return database;
+  late Future<List<TimeLine>> futureTimeLine;
+
+  @override
+  void initState() {
+    super.initState();
+    doInsert();
+    futureTimeLine = widget.db.timeLineDao.getAllTimeLine();
   }
 
-  Future<void> insertTLine(TimeLine tline) async {
-    final db = await getConnection();
-    await db.insert(
-      'timeline',
-      tline.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
-  }
+  DateTime today = DateTime.now();
 
-  Future<List<TimeLine>> allTLines() async {
-    final db = await getConnection();
-    final List<Map<String, dynamic>> maps = await db.query('timeline', orderBy: 'id desc');
-    return List.generate(maps.length, (i) {
-      return TimeLine(
-        id: maps[i]['id'],
-        year: maps[i]['year'],
-        month: maps[i]['month'],
-        day: maps[i]['day'],
-      );
-    });
-  }
-
-  void doInsert() async {
+  void doInsert() {
     var i = 1;
-    while (i < 21) {
+    while (i <= 3) {
       i++;
-      var fido = TimeLine(
-        id: i,
-        year: '2022',
-        month: 'Feb',
-        day: i.toString(),
-      );
-      await insertTLine(fido);
+      setState(() {
+        today = today.add(const Duration(days: -1));
+      });
+
+      final t = TimeLine(today.year.toString(), today.month.toString(), today.day.toString());
+      widget.db.timeLineDao.insertTimeLine(t);
     }
   }
 
-  late Future<List<TimeLine>> arr;
-
   @override
   Widget build(BuildContext context) {
-    doInsert();
-    arr = allTLines();
     return FutureBuilder<List<TimeLine>>(
-      future: arr,
+      future: futureTimeLine,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           var tmp = <TimeLine>[];
           tmp = snapshot.data!;
-          // return Text(tmp[1].name);
           return Padding(
             padding: const EdgeInsets.only(top: 8),
             child: ListView(
@@ -155,6 +131,15 @@ List<Widget> timeLineGenerator(List<TimeLine> arr) {
                   ),
                   color: Colors.pink.shade200,
                 ),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(element.createTime.toString()),
+                      Text(element.updateTime.toString()),
+                    ],
+                  ),
+                ),
               ),
             )
           ],
@@ -164,32 +149,4 @@ List<Widget> timeLineGenerator(List<TimeLine> arr) {
     tmp.add(card);
   }
   return tmp;
-}
-
-class TimeLine {
-  TimeLine({
-    required this.id,
-    required this.year,
-    required this.month,
-    required this.day,
-  });
-
-  final int id;
-  final String year;
-  final String month;
-  final String day;
-
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'year': year,
-      'month': month,
-      'day': day,
-    };
-  }
-
-  @override
-  String toString() {
-    return '$year-$month-$day';
-  }
 }

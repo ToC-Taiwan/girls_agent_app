@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:girls_agent_app/ad_id.dart';
+import 'package:girls_agent_app/basic/ad_id.dart';
 import 'package:girls_agent_app/generated/l10n.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
