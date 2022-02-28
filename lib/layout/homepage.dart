@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:girls_agent_app/calendar.dart';
-import 'package:girls_agent_app/dashboard.dart';
 import 'package:girls_agent_app/database.dart';
 import 'package:girls_agent_app/generated/l10n.dart';
-import 'package:girls_agent_app/profiles.dart';
-import 'package:girls_agent_app/report.dart';
-import 'package:girls_agent_app/settings.dart';
-import 'package:girls_agent_app/timeline.dart';
+import 'package:girls_agent_app/layout/calendar.dart';
+import 'package:girls_agent_app/layout/dashboard.dart';
+import 'package:girls_agent_app/layout/profiles.dart';
+import 'package:girls_agent_app/layout/report.dart';
+import 'package:girls_agent_app/layout/settings.dart';
+import 'package:girls_agent_app/layout/timeline.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title, required this.db}) : super(key: key);

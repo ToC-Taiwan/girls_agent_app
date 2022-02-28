@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1039971329499-9a7bk91edcfb6vuugpade872qu5q487c.apps.googleusercontent.com</string>
+	<string>544226714903-8ud4lahj3mhlhhaunbcdodevl8k09r9s.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1039971329499-9a7bk91edcfb6vuugpade872qu5q487c</string>
+	<string>com.googleusercontent.apps.544226714903-8ud4lahj3mhlhhaunbcdodevl8k09r9s</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBPLyTNZR1jYbgItSnNI8HaDQcU7LPR9vc</string>
+	<string>AIzaSyBsIO-5p_wjdKLAVHYWHAKMuGwfhiM3j3Q</string>
 	<key>GCM_SENDER_ID</key>
-	<string>1039971329499</string>
+	<string>544226714903</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.tocandraw.girlsAgentApp</string>
 	<key>PROJECT_ID</key>
-	<string>girlsagentapp</string>
+	<string>argon-jetty-342517</string>
 	<key>STORAGE_BUCKET</key>
-	<string>girlsagentapp.appspot.com</string>
+	<string>argon-jetty-342517.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1039971329499:ios:018c609e138a1d535233fe</string>
+	<string>1:544226714903:ios:6af32f32c54821f77ac352</string>
 </dict>
 </plist>

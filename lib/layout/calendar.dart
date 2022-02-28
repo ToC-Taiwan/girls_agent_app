@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:girls_agent_app/basic/ad_id.dart';
-import 'package:girls_agent_app/utils.dart';
+import 'package:girls_agent_app/utils/utils.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:table_calendar/table_calendar.dart';
 

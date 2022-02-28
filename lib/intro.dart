@@ -1,13 +1,11 @@
-import 'dart:io' show Platform;
+import 'dart:io';
 
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:girls_agent_app/database.dart';
 import 'package:girls_agent_app/generated/l10n.dart';
-import 'package:girls_agent_app/homepage.dart';
-
-// import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:girls_agent_app/layout/homepage.dart';
 
 class IntroPage extends StatefulWidget {
   const IntroPage({Key? key, required this.db}) : super(key: key);
@@ -30,8 +28,6 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
       vsync: this,
       duration: const Duration(milliseconds: 800),
     );
-    // setupInteractedMessage();
-
     Future.delayed(const Duration(seconds: 1)).then((value) => setState(() => expanded = true)).then((value) => const Duration(seconds: 1)).then(
           (value) => Future.delayed(const Duration(seconds: 1)).then(
             (value) => _lottieAnimation.forward().then(
@@ -50,42 +46,9 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
     WidgetsBinding.instance!.addPostFrameCallback((_) => initPlugin());
   }
 
-  // Future<void> setupInteractedMessage() async {
-  //   // Get any messages which caused the application to open from
-  //   // a terminated state.
-  //   RemoteMessage? initialMessage = await FirebaseMessaging.instance.getInitialMessage();
-
-  //   // If the message also contains a data property with a "type" of "chat",
-  //   // navigate to a chat screen
-  //   if (initialMessage != null) {
-  //     _handleMessage(initialMessage);
-  //   }
-
-  //   // Also handle any interaction when the app is in the background via a
-  //   // Stream listener
-  //   FirebaseMessaging.onMessageOpenedApp.listen(_handleMessage);
-  // }
-
-  // void _handleMessage(RemoteMessage message) {
-  //   // if (message.data['type'] == 'chat') {
-  //   // Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsPage()));
-  //   // Navigator.of(context).pushAndRemoveUntil(
-  //   //     MaterialPageRoute(
-  //   //       builder: (context) => HomePage(
-  //   //         title: S.of(context).app_title,
-  //   //       ),
-  //   //     ),
-  //   //     (route) => false);
-  //   // }
-  // }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlugin() async {
-    // Platform messages may fail, so we use a try/catch PlatformException.
     final status = await AppTrackingTransparency.trackingAuthorizationStatus;
-    // If the system can show an authorization request dialog
     if (Platform.isIOS && status == TrackingStatus.notDetermined) {
-      // Request system's tracking authorization dialog
       await AppTrackingTransparency.requestTrackingAuthorization();
     }
   }

@@ -41,20 +41,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAr6AcSHsTFi1HN5ROU8SqAAOkVVbM7H1I',
-    appId: '1:1039971329499:android:5604c0049175afe15233fe',
-    messagingSenderId: '1039971329499',
-    projectId: 'girlsagentapp',
-    storageBucket: 'girlsagentapp.appspot.com',
+    apiKey: 'AIzaSyBxplp1LDxZPdCZAXydSxcUvs_2nDd133k',
+    appId: '1:544226714903:android:b20a8a81709bdfbc7ac352',
+    messagingSenderId: '544226714903',
+    projectId: 'argon-jetty-342517',
+    storageBucket: 'argon-jetty-342517.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBPLyTNZR1jYbgItSnNI8HaDQcU7LPR9vc',
-    appId: '1:1039971329499:ios:018c609e138a1d535233fe',
-    messagingSenderId: '1039971329499',
-    projectId: 'girlsagentapp',
-    storageBucket: 'girlsagentapp.appspot.com',
-    iosClientId: '1039971329499-9a7bk91edcfb6vuugpade872qu5q487c.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBsIO-5p_wjdKLAVHYWHAKMuGwfhiM3j3Q',
+    appId: '1:544226714903:ios:6af32f32c54821f77ac352',
+    messagingSenderId: '544226714903',
+    projectId: 'argon-jetty-342517',
+    storageBucket: 'argon-jetty-342517.appspot.com',
+    iosClientId: '544226714903-8ud4lahj3mhlhhaunbcdodevl8k09r9s.apps.googleusercontent.com',
     iosBundleId: 'com.tocandraw.girlsAgentApp',
   );
 }
