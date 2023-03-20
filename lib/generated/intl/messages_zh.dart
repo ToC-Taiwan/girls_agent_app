@@ -26,13 +26,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "calendar": MessageLookupByLibrary.simpleMessage("日曆"),
         "contact_us": MessageLookupByLibrary.simpleMessage("聯絡我們"),
         "dashboard": MessageLookupByLibrary.simpleMessage("看板"),
+        "early": MessageLookupByLibrary.simpleMessage("提早"),
+        "last_period": MessageLookupByLibrary.simpleMessage("上個週期"),
+        "late": MessageLookupByLibrary.simpleMessage("延遲"),
         "new_event": MessageLookupByLibrary.simpleMessage("新事件"),
+        "next_period": MessageLookupByLibrary.simpleMessage("下個週期"),
+        "normal": MessageLookupByLibrary.simpleMessage("正常"),
         "notification": MessageLookupByLibrary.simpleMessage("通知"),
+        "on_time": MessageLookupByLibrary.simpleMessage("準時"),
         "pd_center": MessageLookupByLibrary.simpleMessage("控制中心"),
+        "period_history": MessageLookupByLibrary.simpleMessage("歷史週期"),
         "profiles": MessageLookupByLibrary.simpleMessage("個人檔案"),
         "remove_ad": MessageLookupByLibrary.simpleMessage("移除廣告"),
         "report": MessageLookupByLibrary.simpleMessage("報告"),
         "settings": MessageLookupByLibrary.simpleMessage("設定"),
+        "stability": MessageLookupByLibrary.simpleMessage("穩定度"),
         "time_line": MessageLookupByLibrary.simpleMessage("時間軸")
       };
 }

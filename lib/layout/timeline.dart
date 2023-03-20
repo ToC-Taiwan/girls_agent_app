@@ -23,16 +23,19 @@ class _GearPageState extends State<TimeLinePage> {
 
   DateTime today = DateTime.now();
 
-  void doInsert() {
+  void doInsert() async {
     var i = 1;
-    while (i <= 3) {
+    while (i <= 30) {
+      var lastTime = await widget.db.timeLineDao.getLastTimeLine();
       i++;
       setState(() {
+        var last = lastTime ?? TimeLine(today.year.toString(), today.month.toString(), today.day.toString());
+        today = DateTime(int.parse(last.year), int.parse(last.month), int.parse(last.day));
         today = today.add(const Duration(days: -1));
       });
 
       final t = TimeLine(today.year.toString(), today.month.toString(), today.day.toString());
-      widget.db.timeLineDao.insertTimeLine(t);
+      await widget.db.timeLineDao.insertTimeLine(t);
     }
   }
 
@@ -103,7 +106,7 @@ List<Widget> timeLineGenerator(List<TimeLine> arr) {
                           Expanded(
                               flex: 3,
                               child: Text(
-                                element.month,
+                                getMonth(element.getIntMonth()),
                                 style: const TextStyle(fontSize: 15),
                               )),
                           Expanded(
@@ -129,15 +132,48 @@ List<Widget> timeLineGenerator(List<TimeLine> arr) {
                     topRight: Radius.circular(20),
                     bottomRight: Radius.circular(20),
                   ),
-                  color: Colors.pink.shade200,
+                  color: Colors.grey.shade100,
                 ),
                 child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(element.createTime.toString()),
-                      Text(element.updateTime.toString()),
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Row(
+                      // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: const [
+                        Text(
+                          '🤣',
+                          style: TextStyle(fontSize: 30),
+                        ),
+                        Text(
+                          '😇',
+                          style: TextStyle(fontSize: 30),
+                        ),
+                        Text(
+                          '😌',
+                          style: TextStyle(fontSize: 30),
+                        ),
+                        Text(
+                          '🥳',
+                          style: TextStyle(fontSize: 30),
+                        ),
+                        Text(
+                          '😋',
+                          style: TextStyle(fontSize: 30),
+                        ),
+                        Text(
+                          '😛',
+                          style: TextStyle(fontSize: 30),
+                        ),
+                        Text(
+                          '😃',
+                          style: TextStyle(fontSize: 30),
+                        ),
+                        Text(
+                          '😃',
+                          style: TextStyle(fontSize: 30),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -149,4 +185,34 @@ List<Widget> timeLineGenerator(List<TimeLine> arr) {
     tmp.add(card);
   }
   return tmp;
+}
+
+String getMonth(int intMonth) {
+  switch (intMonth) {
+    case 1:
+      return 'JAN';
+    case 2:
+      return 'FEB';
+    case 3:
+      return 'MAR';
+    case 4:
+      return 'APR';
+    case 5:
+      return 'MAY';
+    case 6:
+      return 'JUN';
+    case 7:
+      return 'JUL';
+    case 8:
+      return 'AUG';
+    case 9:
+      return 'SEP';
+    case 10:
+      return 'OCT';
+    case 11:
+      return 'NOV';
+    case 12:
+      return 'DEC';
+  }
+  return '';
 }

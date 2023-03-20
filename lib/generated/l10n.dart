@@ -169,6 +169,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Period`
+  String get period {
+    return Intl.message(
+      'Period',
+      name: 'period',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Period History`
+  String get period_history {
+    return Intl.message(
+      'Period History',
+      name: 'period_history',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stability`
+  String get stability {
+    return Intl.message(
+      'Stability',
+      name: 'stability',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last Period`
+  String get last_period {
+    return Intl.message(
+      'Last Period',
+      name: 'last_period',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Normal`
+  String get normal {
+    return Intl.message(
+      'Normal',
+      name: 'normal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Next Period`
+  String get next_period {
+    return Intl.message(
+      'Next Period',
+      name: 'next_period',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `On Time`
+  String get on_time {
+    return Intl.message(
+      'On Time',
+      name: 'on_time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Early`
+  String get early {
+    return Intl.message(
+      'Early',
+      name: 'early',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Late`
+  String get late {
+    return Intl.message(
+      'Late',
+      name: 'late',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

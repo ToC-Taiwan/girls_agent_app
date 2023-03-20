@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:girls_agent_app/database.dart';
 import 'package:girls_agent_app/generated/l10n.dart';
+import 'package:girls_agent_app/layout/app_bar.dart';
 import 'package:girls_agent_app/layout/calendar.dart';
 import 'package:girls_agent_app/layout/dashboard.dart';
-import 'package:girls_agent_app/layout/profiles.dart';
+import 'package:girls_agent_app/layout/drawer.dart';
 import 'package:girls_agent_app/layout/report.dart';
-import 'package:girls_agent_app/layout/settings.dart';
 import 'package:girls_agent_app/layout/timeline.dart';
 
 class HomePage extends StatefulWidget {
@@ -45,149 +45,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
-      drawer: Container(
-        color: Colors.indigo,
-        padding: const EdgeInsets.only(top: 40),
-        width: 200,
-        child: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: [
-              SizedBox(
-                height: 120,
-                child: DrawerHeader(
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(
-                        'assets/app_icon_no_background.png',
-                      ),
-                    ),
-                    color: Colors.indigo,
-                  ),
-                  child: Column(
-                    children: const [
-                      // Text(
-                      //   S.of(context).pd_center,
-                      //   style: const TextStyle(fontWeight: FontWeight.bold),
-                      // ),
-                      SizedBox(
-                        height: 10,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              ListTile(
-                leading: const Icon(Icons.perm_contact_calendar_outlined),
-                title: Text(
-                  S.of(context).profiles,
-                ),
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilesPage()));
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.three_p),
-                title: Text(
-                  S.of(context).remove_ad,
-                ),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.phone),
-                title: Text(
-                  S.of(context).contact_us,
-                ),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.settings),
-                title: Text(
-                  S.of(context).settings,
-                ),
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsPage()));
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
-      appBar: AppBar(
-        iconTheme: const IconThemeData(
-          color: Colors.pink,
-        ),
-        title: Text(widget.title),
-        titleTextStyle: const TextStyle(
-          color: Colors.black,
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-        ),
-        backgroundColor: Colors.grey.shade100,
-        elevation: 0,
-        actions: [
-          PopupMenuButton(
-            icon: const Icon(Icons.add),
-            itemBuilder: (context) {
-              return [
-                PopupMenuItem(
-                  child: TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'Bleeding',
-                      style: TextStyle(
-                        color: Colors.red,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                PopupMenuItem(
-                  child: TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'Bleeding',
-                      style: TextStyle(
-                        color: Colors.red,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                PopupMenuItem(
-                  child: TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'Bleeding',
-                      style: TextStyle(
-                        color: Colors.red,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                PopupMenuItem(
-                  child: TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'Bleeding',
-                      style: TextStyle(
-                        color: Colors.red,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                )
-              ];
-            },
-          )
-        ],
-      ),
-      body: pages[_currentIndex],
+      drawer: drawer(context),
+      appBar: appBar(context, widget.title),
+      body: pages[_currentIndex] as Widget,
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: const Color.fromARGB(235, 153, 208, 218),
@@ -196,7 +56,6 @@ class _HomePageState extends State<HomePage> {
         showUnselectedLabels: false,
         fixedColor: Colors.pink,
         // elevation: 10,
-        // showUnselectedLabels: true,
         // iconSize: 30,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -215,13 +74,8 @@ class _HomePageState extends State<HomePage> {
             icon: const Icon(Icons.receipt_rounded),
             label: S.of(context).report,
           ),
-          // BottomNavigationBarItem(
-          //   icon: const Icon(Icons.notifications_active_rounded),
-          //   label: S.of(context).notification,
-          // ),
         ],
         currentIndex: _currentIndex,
-        // fixedColor: Colors.blue,
         onTap: _onItemClick,
       ),
     );

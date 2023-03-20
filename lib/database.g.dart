@@ -63,8 +63,11 @@ class _$AppDatabase extends AppDatabase {
 
   TimeLineDao? _timeLineDaoInstance;
 
-  Future<sqflite.Database> open(String path, List<Migration> migrations,
-      [Callback? callback]) async {
+  Future<sqflite.Database> open(
+    String path,
+    List<Migration> migrations, [
+    Callback? callback,
+  ]) async {
     final databaseOptions = sqflite.OpenDatabaseOptions(
       version: 1,
       onConfigure: (database) async {
@@ -97,8 +100,10 @@ class _$AppDatabase extends AppDatabase {
 }
 
 class _$TimeLineDao extends TimeLineDao {
-  _$TimeLineDao(this.database, this.changeListener)
-      : _queryAdapter = QueryAdapter(database, changeListener),
+  _$TimeLineDao(
+    this.database,
+    this.changeListener,
+  )   : _queryAdapter = QueryAdapter(database, changeListener),
         _timeLineInsertionAdapter = InsertionAdapter(
             database,
             'time_line',
@@ -141,6 +146,17 @@ class _$TimeLineDao extends TimeLineDao {
         arguments: [id],
         queryableName: 'time_line',
         isView: false);
+  }
+
+  @override
+  Future<TimeLine?> getLastTimeLine() async {
+    return _queryAdapter.query(
+        'SELECT * FROM time_line WHERE id !=0 ORDER BY id desc LIMIT 1',
+        mapper: (Map<String, Object?> row) => TimeLine(
+            row['year'] as String, row['month'] as String, row['day'] as String,
+            id: row['id'] as int?,
+            createTime: row['create_time'] as int?,
+            updateTime: row['update_time'] as int?));
   }
 
   @override

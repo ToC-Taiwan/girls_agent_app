@@ -26,13 +26,23 @@ class MessageLookup extends MessageLookupByLibrary {
         "calendar": MessageLookupByLibrary.simpleMessage("Calendar"),
         "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
+        "early": MessageLookupByLibrary.simpleMessage("Early"),
+        "last_period": MessageLookupByLibrary.simpleMessage("Last Period"),
+        "late": MessageLookupByLibrary.simpleMessage("Late"),
         "new_event": MessageLookupByLibrary.simpleMessage("New Event"),
+        "next_period": MessageLookupByLibrary.simpleMessage("Next Period"),
+        "normal": MessageLookupByLibrary.simpleMessage("Normal"),
         "notification": MessageLookupByLibrary.simpleMessage("Notification"),
+        "on_time": MessageLookupByLibrary.simpleMessage("On Time"),
         "pd_center": MessageLookupByLibrary.simpleMessage("Pd Center"),
+        "period": MessageLookupByLibrary.simpleMessage("Period"),
+        "period_history":
+            MessageLookupByLibrary.simpleMessage("Period History"),
         "profiles": MessageLookupByLibrary.simpleMessage("Profiles"),
         "remove_ad": MessageLookupByLibrary.simpleMessage("Remove Ad"),
         "report": MessageLookupByLibrary.simpleMessage("Report"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "stability": MessageLookupByLibrary.simpleMessage("Stability"),
         "time_line": MessageLookupByLibrary.simpleMessage("Timeline")
       };
 }

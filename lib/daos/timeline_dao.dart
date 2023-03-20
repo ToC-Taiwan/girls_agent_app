@@ -9,6 +9,9 @@ abstract class TimeLineDao {
   @Query('SELECT * FROM time_line WHERE id = :id')
   Stream<TimeLine?> getTimeLineByID(int id);
 
+  @Query('SELECT * FROM time_line WHERE id !=0 ORDER BY id desc LIMIT 1')
+  Future<TimeLine?> getLastTimeLine();
+
   @Insert()
   Future<void> insertTimeLine(TimeLine t);
 }

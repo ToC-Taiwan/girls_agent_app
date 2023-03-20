@@ -71,5 +71,9 @@
       <key>NSAllowsLocalNetworking</key>
       <true/>
     </dict>
-  </dict>
+  	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+</dict>
 </plist>

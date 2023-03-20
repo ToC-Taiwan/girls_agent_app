@@ -24,7 +24,7 @@ void main() async {
   await MobileAds.instance.initialize();
   await MobileAds.instance.updateRequestConfiguration(
     RequestConfiguration(
-      testDeviceIds: ['kGADSimulatorID', '96cc288e34c9624be4ff75b63b4f0100'],
+      testDeviceIds: ['kGADSimulatorID', '3500eef335b0f8d113cefa3ef85b6bc6'],
     ),
   );
 

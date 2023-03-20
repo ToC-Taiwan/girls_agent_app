@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:girls_agent_app/basic/ad_id.dart';
-import 'package:girls_agent_app/utils/utils.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -32,9 +31,9 @@ class _CalendarPageState extends State<CalendarPage> {
     Icon(Icons.event, color: Colors.pink),
     Icon(Icons.home, color: Colors.pink),
     Icon(Icons.android, color: Colors.pink),
-    Icon(Icons.alarm, color: Colors.pink),
-    Icon(Icons.face, color: Colors.pink),
-    Icon(Icons.language, color: Colors.pink),
+    // Icon(Icons.alarm, color: Colors.pink),
+    // Icon(Icons.face, color: Colors.pink),
+    // Icon(Icons.language, color: Colors.pink),
   ];
 
   @override
@@ -54,26 +53,15 @@ class _CalendarPageState extends State<CalendarPage> {
       child: adWidget,
     );
     return Column(
-      // direction: Axis.vertical,
-      // mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         Expanded(
           child: adContainer,
         ),
-        // const Expanded(
-        //   flex: 1,
-        //   child: SizedBox(
-        //     child: Center(
-        //       child: Text(
-        //         'The 5 Day',
-        //         style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-        //       ),
-        //     ),
-        //   ),
-        // ),
         Expanded(
           flex: 8,
           child: TableCalendar(
+            daysOfWeekHeight: 40,
+            startingDayOfWeek: StartingDayOfWeek.monday,
             firstDay: kFirstDay,
             lastDay: kLastDay,
             focusedDay: _focusedDay,
@@ -159,3 +147,16 @@ class _CalendarPageState extends State<CalendarPage> {
     );
   }
 }
+
+class Event {
+  const Event(this.title);
+
+  final String title;
+
+  @override
+  String toString() => title;
+}
+
+final kToday = DateTime.now();
+final kFirstDay = DateTime(kToday.year, kToday.month - 3, kToday.day);
+final kLastDay = DateTime(kToday.year, kToday.month + 3, kToday.day);

@@ -20,4 +20,8 @@ class TimeLine extends BaseObject {
 
   @ColumnInfo(name: 'day')
   final String day;
+
+  int getIntMonth() {
+    return int.parse(month);
+  }
 }
